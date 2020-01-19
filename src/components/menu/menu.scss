@@ -1,0 +1,14 @@
+@import '../../assets/scss/vars';
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  text-align: center;
+
+  @media screen and (max-width: $tableWidth) {
+    display: none;
+    flex-direction: column;
+    font-size: larger;
+  }
+}
