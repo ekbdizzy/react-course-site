@@ -1,0 +1,20 @@
+@import './assets/scss/resets';
+@import './assets/scss/fonts';
+@import './assets/scss/vars';
+
+body {
+  font-family: Reg, sans-serif;
+}
+
+.wrapper {
+  @extend %wrp;
+}
+
+
+
+.title {
+  font-family: Bold, sans-serif;
+  font-size: 1.5em;
+  color: black;
+  text-align: center;
+}
