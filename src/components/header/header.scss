@@ -1,0 +1,58 @@
+@import "../../index";
+
+.header {
+  width: 100%;
+  background-color: white;
+  color: black;
+  padding: 0.5em 0;
+
+  @media screen and (max-width: $tableWidth) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  a {
+    font-family: Reg, sans-serif;
+    color: black;
+    padding: 0 0.5em;
+    opacity: 0.8;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &.button {
+      @extend %button;
+      font-size: 1em;
+      background-color: $baseColorDark;
+      color: white !important;
+      width: fit-content;
+
+      @media screen and (max-width: $tableWidth) {
+        margin: 0.3em 0;
+      }
+    }
+  }
+}
+
+.logo {
+  font-family: Bold, serif;
+  font-size: 1.5em;
+  color: black;
+  text-align: center;
+}
+
+.top_nav {
+  width: 100%;
+  padding: 0.5em 0;
+  display: flex;
+  flex-direction: row;
+  flex-basis: 100%;
+  justify-content: space-between;
+  align-items: baseline;
+
+  @media screen and (max-width: $tableWidth) {
+    flex-direction: column;
+    align-items: center;
+  }
+}

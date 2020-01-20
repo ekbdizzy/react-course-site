@@ -1,0 +1,46 @@
+@import "../app/app";
+
+.advantages {
+  @extend %content-block-primary;
+
+  &-list {
+    padding: 2em 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    color: white;
+
+    .advantage {
+      flex-basis: 30%;
+      padding: 2em;
+      border: white solid 2px;
+      text-align: center;
+
+      img {
+        padding: 2em;
+      }
+
+      h4 {
+        font-family: Bold, sans-serif;
+        padding-bottom: 0.5em;
+      }
+
+      p {
+        font-family: Reg, sans-serif;
+      }
+
+      @media screen and (max-width: $tableWidth) {
+        margin: 1em;
+      }
+
+    }
+
+    @media screen and (max-width: $tableWidth) {
+      flex-direction: column;
+      justify-content: center;
+    }
+
+  }
+
+
+}

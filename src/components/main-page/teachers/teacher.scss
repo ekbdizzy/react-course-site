@@ -1,0 +1,49 @@
+@import "../app/app";
+
+.teachers {
+  @extend %content-block;
+
+  .teachers-list {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    .teacher {
+      flex-basis: 24%;
+      align-self: self-start;
+      text-align: center;
+      font-family: Reg, sans-serif;
+      font-size: 0.85em;
+
+      #be_teacher {
+        opacity: 0.9;
+        transition: 0.5s;
+
+        &:hover {
+          opacity: 1;
+          transform: rotate(-270deg) scale(1.05, 1.05);
+        }
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      p {
+        margin: 1em;
+      }
+
+      @media screen and (max-width: $tableWidth) {
+        align-self: center;
+        padding-bottom: 1em;
+      }
+    }
+
+    @media screen and (max-width: $tableWidth) {
+      flex-direction: column;
+      justify-content: center;
+    }
+
+  }
+}

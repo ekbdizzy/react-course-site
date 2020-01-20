@@ -1,0 +1,35 @@
+@import "../app/app";
+
+.promo {
+  background: url('../../../assets/img/back_1.png') center no-repeat;
+  width: 100%;
+  height: 500px;
+
+  &__slogan {
+    padding-left: 1em;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+
+    h1 {
+      @extend %title-white;
+      font-size: 2em;
+      flex-basis: 20%;
+    }
+
+    @media screen and (max-width: $tableWidth) {
+      align-content: flex-start;
+    }
+  }
+  a.button {
+    @extend %button;
+    background-color: $baseColorLight;
+    color: white;
+      &:hover {
+          opacity: 1;
+      }
+  }
+
+}

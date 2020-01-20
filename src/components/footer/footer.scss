@@ -1,0 +1,30 @@
+@import '../../index';
+
+.footer {
+  @extend %content-block-black;
+
+  &-contain {
+    padding-left: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    .title {
+      color: white;
+        padding-bottom: 0.5em;
+    }
+
+    a {
+      color: white;
+      font-family: Reg, sans-serif;
+      padding-right: 1em;
+    }
+
+      @media screen and (max-width: $tableWidth) {
+          flex-direction: column;
+          justify-content: center;
+      }
+  }
+
+
+}
