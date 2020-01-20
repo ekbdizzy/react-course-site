@@ -6,18 +6,11 @@ $addonColorOne: #12C2AE;
 $addonColorTwo: #C482DB;
 $backColor: #F1F1F1;
 
-
 // Media screens
 $desktopWidth: 1280px;
 $smDesktopWidth: 980px;
-$tableWidth: 768px;
+$tableWidth: 820px; // default 768px
 $phoneWidth: 480px;
 $smPhoneWidth: 320px;
 
-%wrp {
-  max-width: 1200px;
-  margin: 0 auto;
-  height: 100%;
-  padding: 0.5em;
-}
 

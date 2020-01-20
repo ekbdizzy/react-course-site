@@ -1,10 +1,17 @@
-@import '../../assets/scss/vars';
+@import '../../index';
 
 .menu {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   text-align: center;
+
+  a {
+    opacity: 0.7;
+    &:hover {
+      opacity: 1;
+    }
+  }
 
   @media screen and (max-width: $tableWidth) {
     display: none;
