@@ -31,7 +31,7 @@ function Teachers() {
                             IT-Recruiter</p>
                     </div>
                     <div className="teacher">
-                        <a href="#" alt="Стать преподавателем">
+                        <a href="/" alt="Стать преподавателем">
                             <img src={be_teacher} id="be_teacher" alt="teacher_icon"/>
                         </a>
                         <p>Стать<br/>

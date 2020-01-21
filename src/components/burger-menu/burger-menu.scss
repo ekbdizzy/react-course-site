@@ -1,0 +1,67 @@
+@import "../../index";
+
+
+.burger_menu {
+
+  &__active {
+    .burger_menu__lines {
+      background-color: transparent;
+    }
+
+    .burger_menu__lines::before {
+      top: 0;
+      transform: rotate(45deg);
+    }
+
+    .burger_menu__lines::after {
+      top: 0;
+      transform: rotate(-45deg);
+    }
+  }
+
+  &__button {
+    position: absolute;
+    top: 2em;
+    right: 1em;
+    z-index: 30;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    opacity: 0.6;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &__lines,
+  &__lines::after,
+  &__lines::before {
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background-color: $baseColorDark;
+  }
+
+  &__lines {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__lines::before {
+    content: '';
+    top: -9px;
+  }
+
+  &__lines::after {
+    content: '';
+    top: 9px;
+  }
+
+  @media screen and (min-width: $tableWidth) {
+    display: none;
+  }
+}
+

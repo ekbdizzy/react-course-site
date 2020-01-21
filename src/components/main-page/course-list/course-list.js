@@ -1,13 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import './course-list.scss'
-// import Course from "../course/course";
 
 
 const CourseList = ({list}) => {
-
-    const elements = list.map(({title, start_from, duration, link, image}) => {
+    const elements = list.map(({title, start_from, duration, link, image, id}) => {
         return (
-            <div className="course">
+            <div className="course" key={id}>
                 <div className="course__info">
                     <h3 className="title">{title}</h3>
                     <a href={link} className="button">Подробнее</a>
@@ -30,7 +28,7 @@ const CourseList = ({list}) => {
                 </div>
             </div>
             <div className="align-center">
-                <a href="course_list.html" className="button">Все курсы</a>
+                <a href="/" className="button">Все курсы</a>
             </div>
         </section>
     )

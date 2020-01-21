@@ -6,8 +6,19 @@
   flex-direction: row;
   text-align: center;
 
+  &__active {
+    display: flex !important;
+    flex-direction: column;
+    font-size: larger;
+
+    a {
+      line-height: 2;
+    }
+  }
+
   a {
     opacity: 0.7;
+
     &:hover {
       opacity: 1;
     }
@@ -15,7 +26,5 @@
 
   @media screen and (max-width: $tableWidth) {
     display: none;
-    flex-direction: column;
-    font-size: larger;
   }
 }
