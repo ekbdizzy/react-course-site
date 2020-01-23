@@ -16,13 +16,13 @@ export default class App extends Component {
     toggleAuthWindow = (e) => {
         e.preventDefault();
         if (this.state.authWindowStatus) {
-            console.log('osme');
-
             this.setState(({AuthWindowStatus}) => {
+                document.body.style.overflow = "auto";
                 return {authWindowStatus: false}
             })
         } else {
             this.setState(({AuthWindowStatus}) => {
+                document.body.style.overflow = "hidden";
                 return {authWindowStatus: true}
             })
         }
@@ -30,10 +30,13 @@ export default class App extends Component {
 
 
     render() {
+
+        const {authWindowStatus} = this.state;
+
         return (
             <Router>
-                <div className="App">
-                    <Auth authWindowStatus={this.state.authWindowStatus}
+                <div className={"App" + (authWindowStatus ? " overflow-hidden" : "")}>
+                    <Auth authWindowStatus={authWindowStatus}
                           toggleAuthWindow={this.toggleAuthWindow}/>
                     <Header toggleAuthWindow={this.toggleAuthWindow}/>
                     <Route path="/"

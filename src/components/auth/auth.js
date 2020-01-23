@@ -45,8 +45,7 @@ export default class Auth extends Component {
         return (
             <div className={authClassList}>
                 <div id="close_auth"
-                     onClick={(e) => toggleAuthWindow(e)}
-                >X
+                     onClick={(e) => toggleAuthWindow(e)}>X
                 </div>
                 <div className="entry_title">
                     <div className={"title" + (loginFormIsActive ? " title-active" : "")}
@@ -105,5 +104,4 @@ export default class Auth extends Component {
             </div>
         )
     }
-
 }
