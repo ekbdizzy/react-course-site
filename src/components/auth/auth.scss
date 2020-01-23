@@ -1,0 +1,114 @@
+@import '../../index';
+
+.auth {
+  top: 0;
+  z-index: 100;
+  width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+  background-color: $baseColorDark;
+  overflow: hidden;
+  transition: 0.5s;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-content: center;
+  color: white;
+
+  &-hidden {
+    top: -150%
+  }
+
+  .login_form, .registration_form {
+    margin: 0 auto;
+    max-width: 450px;
+    display: none;
+  }
+
+  .active {
+    display: block;
+  }
+
+
+  #close_auth {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: x-large;
+    padding: 2em;
+    opacity: 0.6;
+
+    &:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+
+  .entry_title {
+    width: 450px;
+    padding-top: 10%;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+
+    .title {
+      @extend %title-white;
+      font-size: 1.5em;
+      opacity: 0.7;
+      cursor: pointer;
+      margin-bottom: 1em;
+
+      &:hover {
+        opacity: 0.9;
+      }
+
+      &-active {
+        opacity: 1;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+    }
+
+  }
+
+  .form_field {
+
+    padding: 0.5em 0;
+
+    .input {
+      width: 100%;
+      padding: 0.7em 1em;
+      margin: 0.5em 0;
+      border-radius: 1.2em;
+
+      &:focus {
+        border-style: solid;
+        padding: calc(0.7em - 3px) calc(1em - 3px);
+        border-color: #9ea4ca;
+
+      }
+    }
+  }
+
+  &__button {
+    @extend %button;
+    font-size: 1em;
+    width: 100%;
+    color: white;
+    background-color: $baseColorLight;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+#reg_rules {
+  margin: 0.5em;
+}
+
+

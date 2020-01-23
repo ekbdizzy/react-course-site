@@ -16,6 +16,7 @@ export default class Header extends Component {
         })
     };
 
+
     render() {
         const {activeMenu} = this.state;
         return (
@@ -28,8 +29,11 @@ export default class Header extends Component {
                             <h3 className='logo'>Авторские курсы</h3>
                         </a>
                         <Menu active={activeMenu}/>
-                        <a href="/" id="login_btn" className="button">Вход и
-                            регистрация</a>
+                        <a href="/" id="login_btn"
+                           className="button"
+                        onClick={this.props.toggleAuthWindow}>
+                            Вход и регистрация
+                        </a>
                     </nav>
                 </div>
             </section>
