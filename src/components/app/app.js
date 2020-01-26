@@ -4,10 +4,15 @@ import Header from "../header";
 import Main from "../main-page/main";
 import Auth from "../auth";
 import Footer from "../footer";
+import ApiService from "../../services/api-service";
 
 import './app.scss';
+import CourseList from "../main-page/course-list";
 
 export default class App extends Component {
+
+
+    apiService = new ApiService();
 
     state = {
         authWindowStatus: false,
@@ -30,18 +35,27 @@ export default class App extends Component {
 
 
     render() {
-
         const {authWindowStatus} = this.state;
+        const courseList = this.apiService
+            .getCourseList()
+            .then((List) => {
+                console.log(List)
+            });
 
         return (
             <Router>
+
                 <div className={"App" + (authWindowStatus ? " overflow-hidden" : "")}>
                     <Auth authWindowStatus={authWindowStatus}
                           toggleAuthWindow={this.toggleAuthWindow}/>
                     <Header toggleAuthWindow={this.toggleAuthWindow}/>
+\
                     <Route path="/"
                            component={Main}
                            exact/>
+                           <div>
+                               {CourseList}
+                           </div>
                     <Footer/>
                 </div>
             </Router>
