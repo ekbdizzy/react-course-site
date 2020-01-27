@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import './course-list.scss'
 
 
@@ -28,7 +29,7 @@ const CourseList = ({list}) => {
                 </div>
             </div>
             <div className="align-center">
-                <a href="/" className="button">Все курсы</a>
+                <Link to="/courses/" className="button">Все курсы</Link>
             </div>
         </section>
     )

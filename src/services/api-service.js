@@ -1,5 +1,6 @@
 export default class ApiService {
 
+    _baseUrl = 'http://67.205.130.122/';
     _apiBase = 'http://67.205.130.122/api';
 
     getData = async (url) => {
@@ -12,7 +13,29 @@ export default class ApiService {
 
     getCourseList = async () => {
         const result = await this.getData('/course/list/');
-        return result;
+        return result.map(this._transformCourseData);
+    };
+
+    _getImageUrl = (img) => {
+        return `${this._baseUrl}${img}`
+    };
+
+    _transformCourseData = (course) => {
+
+        const {
+            id, title, description, start_date,
+            price, duration, icon
+        } = course;
+
+        return {
+            id: id,
+            title: title,
+            description: description,
+            startDate: start_date,
+            price: price,
+            duration: duration,
+            icon: this._getImageUrl(icon)
+        }
     }
 
 

@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import './menu.scss';
 
 
@@ -14,7 +15,7 @@ export default class Menu extends React.Component {
 
         return (
             <div className={classNames}>
-                <a href="/">Курсы</a>
+                <Link to="/courses/">Курсы</Link>
                 <a href="/">События</a>
                 <a href="/">О нас</a>
                 <a href="/">Отзывы</a>

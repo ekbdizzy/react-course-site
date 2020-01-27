@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import './footer.scss';
 
 function Footer() {
@@ -10,7 +11,7 @@ function Footer() {
                         <h3 className="title title__white">Авторские курсы</h3>
                     </a>
                     <div className="footer__menu">
-                        <a href="/">Курсы</a>
+                        <Link to="/courses/">Курсы</Link>
                         <a href="/">События</a>
                         <a href="/">О нас</a>
                         <a href="/">Отзывы</a>

@@ -4,10 +4,10 @@ import Header from "../header";
 import Main from "../main-page/main";
 import Auth from "../auth";
 import Footer from "../footer";
+import CoursesPage from "../courses-page/courses-page";
 import ApiService from "../../services/api-service";
 
 import './app.scss';
-import CourseList from "../main-page/course-list";
 
 export default class App extends Component {
 
@@ -36,11 +36,6 @@ export default class App extends Component {
 
     render() {
         const {authWindowStatus} = this.state;
-        const courseList = this.apiService
-            .getCourseList()
-            .then((List) => {
-                console.log(List)
-            });
 
         return (
             <Router>
@@ -49,13 +44,12 @@ export default class App extends Component {
                     <Auth authWindowStatus={authWindowStatus}
                           toggleAuthWindow={this.toggleAuthWindow}/>
                     <Header toggleAuthWindow={this.toggleAuthWindow}/>
-\
                     <Route path="/"
                            component={Main}
                            exact/>
-                           <div>
-                               {CourseList}
-                           </div>
+                    <Route path='/courses/:id?'
+                           component={CoursesPage}/>
+
                     <Footer/>
                 </div>
             </Router>

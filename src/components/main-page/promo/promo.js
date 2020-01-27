@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 import './promo.scss';
 
@@ -9,10 +10,10 @@ function Promo() {
                 <div className="promo__slogan">
                     <h1>Авторские онлайн-курсы<br/>
                         для профессионалов</h1>
-                    <a href="course_list.html"
+                    <Link to="/courses/"
                        className="button">
                         Посмотреть
-                    </a>
+                    </Link>
                 </div>
             </div>
         </section>
