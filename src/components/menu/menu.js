@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import './menu.scss';
 
 
@@ -7,7 +7,7 @@ export default class Menu extends React.Component {
 
     render() {
 
-        const {active} = this.props;
+        const {active, isLoggedIn} = this.props;
         let classNames = 'menu';
         if (active) {
             classNames += ' menu__active'
@@ -19,10 +19,7 @@ export default class Menu extends React.Component {
                 <a href="/">События</a>
                 <a href="/">О нас</a>
                 <a href="/">Контакты</a>
-
-
-
-                <a href='/'>Личный кабинет</a>
+                {isLoggedIn ? <Link to='/profile/'>Личный кабинет</Link> : ""}
             </div>
         )
     }

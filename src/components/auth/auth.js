@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from 'react-router-dom';
 import "./auth.scss";
 
 export default class Auth extends Component {
@@ -38,12 +39,18 @@ export default class Auth extends Component {
         const {
             authWindowStatus,
             toggleAuthWindow,
-            postLoginForm
+            postLoginForm,
+            isLoggedIn
         } = this.props;
 
         const loginClassList = "login_form" + (loginFormIsActive ? ' active' : ''),
             regClassList = "registration_form" + (regFormIsActive ? ' active' : ''),
             authClassList = "auth" + (authWindowStatus ? '' : ' auth-hidden');
+
+        if (isLoggedIn) {
+            document.body.style.overflow = "auto";
+            return <Redirect to="/"/>
+        }
 
         return (
             <div className={authClassList}>

@@ -55,7 +55,7 @@ export default class ApiService {
             body: JSON.stringify(data)
         });
         if (!result.ok) {
-            console.log('wrong password or email')
+            return {error: 'Wrong password or email'}
         }
         return await result.json();
     }
