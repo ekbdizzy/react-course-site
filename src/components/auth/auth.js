@@ -30,13 +30,16 @@ export default class Auth extends Component {
 
 
     render() {
-
         const {
             loginFormIsActive,
             regFormIsActive
         } = this.state;
 
-        const {authWindowStatus, toggleAuthWindow} = this.props;
+        const {
+            authWindowStatus,
+            toggleAuthWindow,
+            postLoginForm
+        } = this.props;
 
         const loginClassList = "login_form" + (loginFormIsActive ? ' active' : ''),
             regClassList = "registration_form" + (regFormIsActive ? ' active' : ''),
@@ -56,20 +59,33 @@ export default class Auth extends Component {
                     </div>
                 </div>
 
-                <form className={loginClassList} action="">
+                <form className={loginClassList}
+                      action=""
+                      onSubmit={(e) => {
+                          postLoginForm(e)
+                      }}>
                     <div className="form_field">
                         <label htmlFor="email">Электронная почта:</label>
-                        <input className="input" type="email" id="email" placeholder="yourmail@mail.ru"
+                        <input className="input"
+                               name="email"
+                               type="email"
+                               id="email"
+                               placeholder="yourmail@mail.ru"
                                autoComplete="username"/>
                     </div>
                     <div className="form_field">
                         <label htmlFor="password">Пароль:</label>
-                        <input className="input" type="password" id="password" placeholder="Пароль"
+                        <input className="input"
+                               type="password"
+                               name="password"
+                               id="password"
+                               placeholder="Пароль"
                                autoComplete="current-password"/>
                     </div>
                     <div className="form_field">
                         <button className="auth__button"
-                                type="submit" id="login_form_btn">
+                                type="submit"
+                                id="login_form_btn">
                             Войти
                         </button>
                     </div>

@@ -18,9 +18,11 @@ export default class Menu extends React.Component {
                 <Link to="/courses/">Курсы</Link>
                 <a href="/">События</a>
                 <a href="/">О нас</a>
-                <a href="/">Отзывы</a>
-                <a href="/">FAQ</a>
                 <a href="/">Контакты</a>
+
+
+
+                <a href='/'>Личный кабинет</a>
             </div>
         )
     }

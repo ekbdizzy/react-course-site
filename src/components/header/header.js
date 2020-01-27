@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Link} from "react-router-dom";
 import BurgerMenu from "../burger-menu";
 import Menu from "../menu";
 import '../burger-menu';
@@ -19,21 +20,23 @@ export default class Header extends Component {
 
     render() {
         const {activeMenu} = this.state;
+        const {toggleAuthWindow, isLoggedIn, userLogout} = this.props;
+
         return (
             <section className="header">
                 <div className="wrapper">
                     <nav className="top_nav">
                         <BurgerMenu
                             toggleMenu={this.toggleMenuVisibility}/>
-                        <a href="/" className="text_logo">
+                        <Link to="/" className="text_logo">
                             <h3 className='logo'>Авторские курсы</h3>
-                        </a>
-                        <Menu active={activeMenu}/>
-                        <a href="/" id="login_btn"
-                           className="button"
-                        onClick={this.props.toggleAuthWindow}>
-                            Вход и регистрация
-                        </a>
+                        </Link>
+                        <Menu active={activeMenu}
+                              isLoggedIn={isLoggedIn}
+                        />
+                        {isLoggedIn ? <LogoutButton userLogout={userLogout}/>
+                            : <AuthButton toggleAuthWindow={toggleAuthWindow}/>
+                        }
                     </nav>
                 </div>
             </section>
@@ -41,3 +44,27 @@ export default class Header extends Component {
     }
 }
 
+
+const AuthButton = ({toggleAuthWindow}) => {
+    return (
+        <React.Fragment>
+            <a href="/" id="login_btn"
+               className="button"
+               onClick={toggleAuthWindow}>
+                Вход и регистрация
+            </a>
+        </React.Fragment>
+    )
+};
+
+const LogoutButton = ({userLogout}) => {
+    return (
+        <React.Fragment>
+            <a href="/" id="login_btn"
+               className="button"
+               onClick={(e) => userLogout(e)}>
+                Выйти
+            </a>
+        </React.Fragment>
+    )
+};

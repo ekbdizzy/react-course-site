@@ -1,7 +1,7 @@
 export default class ApiService {
 
     _baseUrl = 'http://67.205.130.122/';
-    _apiBase = 'http://67.205.130.122/api';
+    _apiBase = `${this._baseUrl}api`;
 
     getData = async (url) => {
         const result = await fetch(`${this._apiBase}${url}`);
@@ -21,7 +21,6 @@ export default class ApiService {
     };
 
     _transformCourseData = (course) => {
-
         const {
             id, title, description, start_date,
             price, duration, icon
@@ -36,7 +35,28 @@ export default class ApiService {
             duration: duration,
             icon: this._getImageUrl(icon)
         }
+    };
+
+    _getToken = () => {
+        try {
+            return localStorage.getItem('Token');
+        } catch (e) {
+            return null;
+        }
+    };
+
+
+    login = async (url, data) => {
+        const result = await fetch(`${this._apiBase}${url}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8',
+            },
+            body: JSON.stringify(data)
+        });
+        if (!result.ok) {
+            console.log('wrong password or email')
+        }
+        return await result.json();
     }
-
-
 }

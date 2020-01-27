@@ -7,9 +7,9 @@ function Footer() {
         <footer className="footer">
             <div className="wrapper">
                 <div className="footer-contain">
-                    <a href="/" className="">
+                    <Link to="/" className="text_logo">
                         <h3 className="title title__white">Авторские курсы</h3>
-                    </a>
+                    </Link>
                     <div className="footer__menu">
                         <Link to="/courses/">Курсы</Link>
                         <a href="/">События</a>
