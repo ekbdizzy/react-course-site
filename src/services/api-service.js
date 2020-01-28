@@ -1,6 +1,8 @@
 export default class ApiService {
 
+
     _baseUrl = 'http://67.205.130.122/';
+    // _baseUrl = 'http://localhost:8000/';
     _apiBase = `${this._baseUrl}api`;
 
     getData = async (url) => {
@@ -45,6 +47,20 @@ export default class ApiService {
         }
     };
 
+    getProfileData = async (url, token) => {
+        const result = await fetch(`${this._apiBase}${url}`, {
+            method: 'get',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': `Token ${token}`
+            })
+        });
+        if (!result.ok) {
+            return {error: 'Auth error'}
+        }
+        return await result.json();
+    };
+
 
     login = async (url, data) => {
         const result = await fetch(`${this._apiBase}${url}`, {
@@ -58,5 +74,23 @@ export default class ApiService {
             return {error: 'Wrong password or email'}
         }
         return await result.json();
+    };
+
+
+    updateProfileData = async (url, body, token) => {
+        const result = await fetch(`${this._apiBase}${url}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8',
+                'Authorization': `Token ${token}`
+            },
+            body: JSON.stringify(body)
+        });
+        if (!result.ok) {
+            return {error: 'Wrong password or email'}
+        }
+        return await result.json();
     }
+
+
 }

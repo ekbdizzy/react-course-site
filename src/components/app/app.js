@@ -19,6 +19,7 @@ export default class App extends Component {
         authWindowStatus: false,
         isLoggedIn: false,
         token: null,
+        user: null
     };
 
 
@@ -61,7 +62,7 @@ export default class App extends Component {
                 localStorage.setItem('token', result['token']);
                 this.setState({
                     isLoggedIn: true,
-                    user: result
+                    token: result.token
                 });
             })
         ;
@@ -80,8 +81,25 @@ export default class App extends Component {
     };
 
 
+    updateProfile = (e, token = this.state.token, url = '/user/profile/') => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const body = {};
+        formData.forEach((value, key) => body[key] = value);
+        this.apiService.updateProfileData(url, body, token)
+            .then((result) => {
+                if (result.error) {
+                    return alert(result.error);
+                }
+                console.log(result);
+            })
+
+
+    };
+
+
     render() {
-        const {authWindowStatus, isLoggedIn} = this.state;
+        const {authWindowStatus, isLoggedIn, token} = this.state;
 
         return (
             <Router>
@@ -97,14 +115,21 @@ export default class App extends Component {
                             userLogout={this.userLogout}
                     />
                     <Route path="/"
-                           // component={Main}
-                           component={ProfilePage}
+                           component={Main}
+                        // component={ProfilePage}
                            exact/>
                     <Route path='/courses/:id?'
                            component={CoursesPage}/>
 
                     <Route path='/profile/'
-                           component={ProfilePage}/>
+                           render={() => (
+                               <ProfilePage
+                                   isLoggedIn={isLoggedIn}
+                                   token={token}
+                                   updateProfile={this.updateProfile}
+                               />
+                           )}
+                    />
 
                     <Footer isLoggedIn={isLoggedIn}/>
                 </div>

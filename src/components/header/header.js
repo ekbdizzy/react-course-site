@@ -44,7 +44,6 @@ export default class Header extends Component {
     }
 }
 
-
 const AuthButton = ({toggleAuthWindow}) => {
     return (
         <React.Fragment>

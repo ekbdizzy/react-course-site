@@ -71,7 +71,6 @@
     max-height: 200px;
   }
 
-
   &__text {
     color: white;
     padding: 1em 0;
@@ -80,5 +79,12 @@
   span:first-child {
     margin-right: 1em;
   }
+}
 
+.link-to-courses {
+  @extend %button;
+  margin: 1em auto;
+  background-color: $baseColorLight;
+  color: white;
+  font-size: 1em;
 }

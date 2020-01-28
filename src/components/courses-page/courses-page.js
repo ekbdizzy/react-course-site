@@ -19,6 +19,12 @@ export default class CoursesPage extends Component {
             })
     }
 
+    componentWillUnmount() {
+        this.setState({
+            courseList: null
+        });
+    }
+
 
     renderItems(arr) {
         return arr.map((item) => {

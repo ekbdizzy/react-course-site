@@ -1,17 +1,22 @@
 import React, { Component } from "react";
+import { Redirect, Link } from "react-router-dom";
 import './profile-page.scss';
+
+import ApiService from "../../services/api-service";
 
 import avatar from '../../assets/img/lana.jpg';
 import knowledgeIcon from '../../assets/img/knowledges-icon.svg';
 import sheduleIcon from '../../assets/img/shedule-icon.svg';
-import kubernetesIcon from '../../assets/img/kubernetes_icon.svg'
 
 export default class ProfilePage extends Component {
 
+    apiService = new ApiService();
+
 
     state = {
-        full_name: 'Lana Rhodes',
-        email: 'admin@admin.ru'
+        full_name: '',
+        email: '',
+        courseList: []
     };
 
     handleChangeName(event) {
@@ -23,9 +28,51 @@ export default class ProfilePage extends Component {
     }
 
 
-    render() {
+    componentDidMount() {
+        const {token} = this.props;
 
-        const {full_name, email} = this.state;
+        if (!token) {
+            return <Redirect to="/"/>
+        }
+
+        this.apiService.getProfileData('/user/profile/', token)
+            .then((profile) => {
+                const [coursesList, {full_name, email}] = profile;
+
+                this.setState({
+                        full_name: full_name,
+                        email: email,
+                        courseList: coursesList
+                    }
+                )
+            })
+    }
+
+    renderCourses = (courseList) => {
+        return courseList.map((course) => {
+            const {id, title, icon} = course;
+            return (
+                <div className="course" key={id}>
+                    <div className="course__info">
+                        <h3>{title}</h3>
+                        <div className="course__button">Перейти</div>
+                    </div>
+                    <img src={this.apiService._getImageUrl(icon)} alt={title}/>
+                </div>
+            )
+        })
+    };
+
+
+    render() {
+        const {full_name, email, courseList} = this.state;
+        const {isLoggedIn, updateProfile} = this.props;
+
+        const courses = this.renderCourses(courseList);
+
+        if (!isLoggedIn) {
+            return <Redirect to="/"/>
+        }
 
         return (
             <div>
@@ -37,24 +84,27 @@ export default class ProfilePage extends Component {
 
                                 <div className="photo">
                                     <h3>Личная информация</h3>
-                                    <img src={avatar}/>
+                                    <img src={avatar} alt={full_name}/>
                                     <div className='edit-photo'>
-                                        <a href="/#">Сменить фото</a>
+                                        <a href="/#">Загрузить фото</a>
                                         <a href="/#">удалить</a>
                                     </div>
                                 </div>
 
                                 <div className="profile-data">
 
-                                    <form className=''>
+                                    <form className=''
+                                          onSubmit={(e) => updateProfile(e)}
+                                    >
                                         <div className="form_field">
                                             <input className="input"
                                                    value={full_name}
                                                    name="full_name"
                                                    type="text"
                                                    id="full_name"
-                                                   autoComplete="username"
-                                                   onChange={(e) => this.handleChangeName(e)}/>
+                                                   autoComplete="off"
+                                                   onChange={(e) => this.handleChangeName(e)}
+                                            />
                                         </div>
                                         <div className="form_field">
                                             <input className="input"
@@ -78,10 +128,10 @@ export default class ProfilePage extends Component {
                             </div>
 
                             <div className="courses-info">
-                                <img src={knowledgeIcon}/>
-                                <h2>У вас активных курсов: 2</h2>
+                                <img src={knowledgeIcon} alt=''/>
+                                <h2>У вас активных курсов: {courseList.length}</h2>
                                 <div className="shedule">
-                                    <img src={sheduleIcon}/>
+                                    <img src={sheduleIcon} alt='Расписание'/>
                                     <span>Ближайшее занятие: 02.02</span>
                                 </div>
                             </div>
@@ -89,35 +139,23 @@ export default class ProfilePage extends Component {
                     </div>
                 </section>
 
-
                 <section className='my-courses'>
                     <div className="wrapper">
                         <h2>Мои курсы</h2>
-
                         <div className="courses-list">
+                            {courseList.length ? courses : <p>Нет активных курсов</p>}
+                        </div>
 
-                            <div className="course">
-                                <div className="course__info">
-                                    <h3>Инфраструктурная платформа</h3>
-                                    <div className="course__button">Перейти</div>
-                                </div>
-                                <img src={kubernetesIcon}/>
-                            </div>
-
-                            <div className="course">
-                                <div className="course__info">
-                                    <h3>Инфраструктурная платформа на основе Kubernetes</h3>
-                                    <div className="course__button">Перейти</div>
-                                </div>
-                                <img src={kubernetesIcon}/>
-                            </div>
+                        <div className='link-to-courses'>
+                            <Link to="/courses/" className="link-to-courses">Все курсы</Link>
                         </div>
 
                     </div>
-
                 </section>
-
             </div>
         )
     }
 }
+
+
+
