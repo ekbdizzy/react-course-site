@@ -1,0 +1,190 @@
+@import "../../index";
+
+.profile-block {
+  background-color: $addonColorTwo;
+  padding: 3em;
+  width: 100%;
+
+  .profile-docs {
+    display: flex;
+    flex-flow: wrap row;
+    align-content: center;
+    justify-content: center;
+
+    @media screen and (max-width: $smDesktopWidth) {
+      flex-direction: column;
+      align-content: center;
+    }
+
+    .info {
+      padding: 2em;
+      display: flex;
+      flex-basis: 50%;
+      flex-flow: nowrap row;
+      justify-content: space-around;
+      align-items: center;
+      background-color: white;
+
+      .photo {
+        display: flex;
+        flex-basis: 40%;
+        flex-direction: column;
+
+        h3 {
+          @extend %title;
+          margin-bottom: 1em;
+          font-size: 1.2em;
+        }
+
+        img {
+          display: flex;
+          width: 100%;
+          border-radius: 1em;
+        }
+
+        .edit-photo {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 1em;
+          font-size: 0.85em;
+        }
+      }
+
+      .profile-data {
+        display: flex;
+        flex-basis: 50%;
+
+        form {
+          display: flex;
+          width: 100%;
+          flex-direction: column;
+
+
+          .form_field {
+
+            //padding: 0.5em 0;
+
+            .input {
+              width: 100%;
+              padding: 0.7em 1em;
+              margin: 0.4em 0;
+              border-radius: 1.2em;
+              border-color: $backColor;
+              border-style: solid;
+              border-width: 1px;
+              padding: calc(0.7em - 1px) calc(1em - 1px);
+
+              &:focus {
+                border-style: solid;
+                border-width: 3px;
+                padding: calc(0.7em - 3px) calc(1em - 3px);
+                border-color: #9ea4ca;
+              }
+            }
+
+            .button {
+              @extend %button;
+              margin: 0.4em 0;
+              font-size: 1em;
+              width: 100%;
+              color: white;
+              background-color: $baseColorLight;
+
+              &:hover {
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .courses-info {
+      padding: 3em;
+      background-color: $baseColorLight;
+      flex-basis: 50%;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+
+      h2 {
+        @extend %title-white;
+        text-align: center;
+        font-size: 1.5em;
+        line-height: 2em;
+        border-bottom: white solid 2px;
+      }
+
+      .shedule {
+        margin-top: 1em;
+      }
+
+      img {
+        margin-right: 0.5em;
+      }
+
+      span {
+        font-size: 0.85em;
+        color: white;
+      }
+    }
+  }
+}
+
+.my-courses {
+  background-color: $backColor;
+  padding: 3em;
+
+  h2 {
+    @extend %title-center;
+    font-size: 1.5em;
+  }
+
+  .courses-list {
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: space-evenly;
+
+    @media screen and (max-width: $smDesktopWidth) {
+      flex-direction: column;
+      align-content: center;
+    }
+
+    .course {
+      margin: 0.5em 0;
+      display: flex;
+      width: 100%;
+      padding: 2em;
+      flex-basis: 48%;
+      background-color: $baseColorDark;
+      transition: 0.5s;
+
+
+      &:hover {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      }
+
+      &__info {
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: space-evenly;
+        flex-basis: 75%;
+
+      }
+
+      h3 {
+        @extend %title-white;
+        font-size: 1.2em;
+      }
+
+      &__button {
+        @extend %button;
+        margin-top: 1em;
+        background-color: white;
+      }
+    }
+  }
+
+
+}

@@ -97,7 +97,8 @@ export default class App extends Component {
                             userLogout={this.userLogout}
                     />
                     <Route path="/"
-                           component={Main}
+                           // component={Main}
+                           component={ProfilePage}
                            exact/>
                     <Route path='/courses/:id?'
                            component={CoursesPage}/>
