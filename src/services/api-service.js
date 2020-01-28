@@ -77,6 +77,22 @@ export default class ApiService {
     };
 
 
+    register = async (url, data) => {
+        const result = await fetch(`${this._apiBase}${url}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8',
+            },
+            body: JSON.stringify(data)
+        });
+        if (!result.ok) {
+            console.log(result);
+            return {result}
+        }
+        return await result.json();
+    };
+
+
     updateProfileData = async (url, body, token) => {
         const result = await fetch(`${this._apiBase}${url}`, {
             method: 'POST',

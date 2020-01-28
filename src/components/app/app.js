@@ -68,6 +68,27 @@ export default class App extends Component {
         ;
     };
 
+    sergey = {
+        "full_name": "Sergey",
+        "email": "sergey@mail.ru",
+        "password": "1"
+    };
+
+    postRegistrationForm = (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const body = {};
+        formData.forEach((value, key) => body[key] = value);
+        this.apiService.login('/user/register/', body)
+            .then((result) => {
+                if (result.error) {
+                    return alert(result.error);
+                }
+                alert(`${body.full_name}, поздравляем, вы зарегистрированы!
+                Воспользуйтесь формой входа для доступа к личному кабинету`)
+            })
+    };
+
 
     userLogout = (e) => {
         e.preventDefault();
@@ -107,6 +128,7 @@ export default class App extends Component {
                     <Auth authWindowStatus={authWindowStatus}
                           toggleAuthWindow={this.toggleAuthWindow}
                           postLoginForm={this.postLoginForm}
+                          postRegistrationForm={this.postRegistrationForm}
                           isLoggedIn={isLoggedIn}
                     />
                     <Header toggleAuthWindow={this.toggleAuthWindow}

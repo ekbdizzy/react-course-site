@@ -12,7 +12,6 @@ export default class ProfilePage extends Component {
 
     apiService = new ApiService();
 
-
     state = {
         full_name: '',
         email: '',

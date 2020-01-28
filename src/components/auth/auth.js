@@ -7,6 +7,7 @@ export default class Auth extends Component {
     state = {
         loginFormIsActive: true,
         regFormIsActive: false,
+        approveConditions: false
     };
 
     setActiveRegForm = (e) => {
@@ -29,17 +30,26 @@ export default class Auth extends Component {
         });
     };
 
+    approveConditionsToggle = () => {
+        this.setState((state) => {
+            console.log(!this.state.approveConditions);
+            return {approveConditions: !this.state.approveConditions}
+        })
+    };
+
 
     render() {
         const {
             loginFormIsActive,
-            regFormIsActive
+            regFormIsActive,
+            approveConditions
         } = this.state;
 
         const {
             authWindowStatus,
             toggleAuthWindow,
             postLoginForm,
+            postRegistrationForm,
             isLoggedIn
         } = this.props;
 
@@ -47,7 +57,8 @@ export default class Auth extends Component {
             regClassList = "registration_form" + (regFormIsActive ? ' active' : ''),
             authClassList = "auth" + (authWindowStatus ? '' : ' auth-hidden');
 
-        if (isLoggedIn) {
+        if
+        (isLoggedIn) {
             document.body.style.overflow = "auto";
             return <Redirect to="/"/>
         }
@@ -98,27 +109,45 @@ export default class Auth extends Component {
                     </div>
                 </form>
 
-                <form className={regClassList} action="">
+                <form className={regClassList}
+                      action=""
+                      onSubmit={(e) => {postRegistrationForm(e)}}
+                >
                     <div className="form_field">
                         <label htmlFor="reg_name">Ваше имя:</label>
-                        <input className="input" type="text" id="reg_name" placeholder="Ваше имя"/>
+                        <input
+                            className="input"
+                            type="text"
+                            name="full_name"
+                            id="reg_name"
+                            placeholder="Ваше имя"/>
                     </div>
                     <div className="form_field">
                         <label htmlFor="reg_email">Электронная почта:</label>
-                        <input className="input" type="email" id="reg_email" placeholder="yourmail@mail.ru"
-                               autoComplete="username"/>
+                        <input className="input"
+                               type="email"
+                               name="email"
+                               id="reg_email"
+                               placeholder="yourmail@mail.ru"
+                               autoComplete="email"/>
                     </div>
                     <div className="form_field">
                         <label htmlFor="reg_password">Пароль:</label>
-                        <input className="input" type="password" id="reg_password" placeholder="Пароль"
+                        <input className="input"
+                               type="password"
+                               id="reg_password"
+                               placeholder="Пароль"
+                               name="password"
                                autoComplete="current-password"/>
                     </div>
                     <div className="form_field">
-                        <input type="checkbox" id="reg_rules"/>
+                        <input type="checkbox" id="reg_rules"
+                               onClick={() => this.approveConditionsToggle()}/>
                         <label htmlFor="reg_rules">Согласен с условиями</label>
                     </div>
                     <div className="form_field">
                         <button className="auth__button"
+                                disabled={!approveConditions}
                                 type="submit" id="reg_form_btn">
                             Зарегистрироваться
                         </button>
