@@ -26,7 +26,6 @@ export default class ProfilePage extends Component {
         this.setState({email: event.target.value})
     }
 
-
     componentDidMount() {
         const {token} = this.props;
 
@@ -122,7 +121,6 @@ export default class ProfilePage extends Component {
                                             </button>
                                         </div>
                                     </form>
-
                                 </div>
                             </div>
 
@@ -144,11 +142,9 @@ export default class ProfilePage extends Component {
                         <div className="courses-list">
                             {courseList.length ? courses : <p>Нет активных курсов</p>}
                         </div>
-
                         <div className='link-to-courses'>
                             <Link to="/courses/" className="link-to-courses">Все курсы</Link>
                         </div>
-
                     </div>
                 </section>
             </div>

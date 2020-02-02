@@ -12,7 +12,7 @@ export default class Auth extends Component {
 
     setActiveRegForm = (e) => {
         e.preventDefault();
-        this.setState(({loginFormIsActive, regFormIsActive}) => {
+        this.setState((state) => {
             return {
                 loginFormIsActive: false,
                 regFormIsActive: true
@@ -22,7 +22,7 @@ export default class Auth extends Component {
 
     setActiveLoginForm = (e) => {
         e.preventDefault();
-        this.setState(({loginFormIsActive, regFormIsActive}) => {
+        this.setState((state) => {
             return {
                 loginFormIsActive: true,
                 regFormIsActive: false
@@ -111,8 +111,7 @@ export default class Auth extends Component {
 
                 <form className={regClassList}
                       action=""
-                      onSubmit={(e) => {postRegistrationForm(e)}}
-                >
+                      onSubmit={(e) => {postRegistrationForm(e)}}>
                     <div className="form_field">
                         <label htmlFor="reg_name">Ваше имя:</label>
                         <input

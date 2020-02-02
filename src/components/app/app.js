@@ -54,7 +54,7 @@ export default class App extends Component {
         const formData = new FormData(e.target);
         const body = {};
         formData.forEach((value, key) => body[key] = value);
-        this.apiService.login('/user/login/', body)
+        this.apiService.auth('/user/login/', body)
             .then((result) => {
                 if (result.error) {
                     return alert(result.error);
@@ -64,22 +64,18 @@ export default class App extends Component {
                     isLoggedIn: true,
                     token: result.token
                 });
-            })
-        ;
+            }).catch((e) => {
+            console.log(e);
+        });
     };
 
-    sergey = {
-        "full_name": "Sergey",
-        "email": "sergey@mail.ru",
-        "password": "1"
-    };
 
     postRegistrationForm = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const body = {};
         formData.forEach((value, key) => body[key] = value);
-        this.apiService.login('/user/register/', body)
+        this.apiService.auth('/user/register/', body)
             .then((result) => {
                 if (result.error) {
                     return alert(result.error);
@@ -152,7 +148,6 @@ export default class App extends Component {
                                />
                            )}
                     />
-
                     <Footer isLoggedIn={isLoggedIn}/>
                 </div>
             </Router>

@@ -62,7 +62,7 @@ export default class ApiService {
     };
 
 
-    login = async (url, data) => {
+    auth = async (url, data) => {
         const result = await fetch(`${this._apiBase}${url}`, {
             method: 'POST',
             headers: {
@@ -72,22 +72,6 @@ export default class ApiService {
         });
         if (!result.ok) {
             return {error: 'Wrong password or email'}
-        }
-        return await result.json();
-    };
-
-
-    register = async (url, data) => {
-        const result = await fetch(`${this._apiBase}${url}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8',
-            },
-            body: JSON.stringify(data)
-        });
-        if (!result.ok) {
-            console.log(result);
-            return {result}
         }
         return await result.json();
     };

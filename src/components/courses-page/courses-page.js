@@ -28,7 +28,6 @@ export default class CoursesPage extends Component {
 
     renderItems(arr) {
         return arr.map((item) => {
-
             const {
                 id, title, description, startDate,
                 duration, icon
@@ -74,11 +73,9 @@ export default class CoursesPage extends Component {
 
                 <section className="content-block content-block__addon">
                     <div className='wrapper'>
-
                         {items}
                     </div>
                 </section>
-
             </div>
         )
     }
