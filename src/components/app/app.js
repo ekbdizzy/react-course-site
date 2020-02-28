@@ -134,7 +134,6 @@ export default class App extends Component {
                     />
                     <Route path="/"
                            component={Main}
-                        // component={ProfilePage}
                            exact/>
                     <Route path='/courses/:id?'
                            component={CoursesPage}/>

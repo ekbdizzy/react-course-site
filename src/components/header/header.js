@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import BurgerMenu from "../burger-menu";
 import Menu from "../menu";
 import '../burger-menu';
@@ -12,9 +12,8 @@ export default class Header extends Component {
     };
 
     toggleMenuVisibility = () => {
-        this.setState(({activeMenu}) => {
-            return {activeMenu: !activeMenu}
-        })
+        this.setState(({activeMenu}) => ({activeMenu: !activeMenu})
+        )
     };
 
 
