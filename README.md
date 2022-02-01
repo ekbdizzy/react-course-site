@@ -2,10 +2,8 @@
 
 Simple SPA on React for REST API on Django Rest Framework.
 
-Backend:
-~~~
-https://github.com/ekbdizzy/course_site_api
-~~~
+Backend: https://github.com/ekbdizzy/course_site_api
+
 
 Install dependencies:
 ~~~
